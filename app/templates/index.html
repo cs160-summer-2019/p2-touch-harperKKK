@@ -84,7 +84,45 @@
 		</div>
 	</div>
 	<script>
-	  // your solution here
+    
+    var rotateObj = document.getElementById("rotate-box");
+    var hammerRotate = new Hammer( rotateObj );
+    hammerRotate.get('rotate').set({ enable: true });
+    hammerRotate.on("rotateend", function(ev) {
+      rotateObj.style.webkitTransform = "rotate(45deg)";
+    });
+    
+    var pinchObj = document.getElementById("pinch-box");
+    var hammerPinch = new Hammer( pinchObj );
+    hammerPinch.get('pinch').set({ enable: true });
+    hammerPinch.on("pinchend", function() {
+      pinchObj.style.height = "20px";
+    });
+    
+    var pressObj = document.getElementById("press-box");
+    var hammerPress = new Hammer( pressObj );
+    hammerPress.on("pressup", function() {
+      pressObj.style.backgroundColor = "#0d124a";
+    });
+    
+    var panObj = document.getElementById("pan-box");
+    var hammerPan = new Hammer( panObj );
+    hammerPan.on("pan", function(ev) {
+      panObj.style.marginLeft = "100px";
+    });
+    
+    var tapObj = document.getElementById("tap-box");
+    var hammerTap = new Hammer( tapObj );
+    hammerTap.on("tap", function(ev) {
+      tapObj.style.color = "#ffffff";
+    });
+    
+    var swipeObj = document.getElementById("swipe-box");
+    var hammerSwipe = new Hammer( swipeObj );
+    hammerSwipe.on("swipe", function(ev) {
+      $( "#swipe-box" ).hide( "slow" );
+    });
+    
   </script>
 </body>
 </html>
